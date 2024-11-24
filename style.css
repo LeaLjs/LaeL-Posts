@@ -48,8 +48,34 @@ div#title > h1{
 span{
     color: #a47ec9;
     font-family: "Oswald", sans-serif;
-    
 }
+
+input{
+    color: rgb(255, 255, 255);
+    background-color: #2c2c2c;
+}
+
+#create-post{
+    background-color: #100e13;
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+    float: right;
+    margin-top: -10px;
+    border-radius: 5px;
+    display: none;
+}
+#create-area{
+    text-align: center;
+
+}
+
+#close{
+    background-color: #0d256c;
+    display: flex;
+   margin-left: 490px;
+}
+
 #posts{
     background-image:linear-gradient(to bottom right, rgb(204, 162, 162),#fff) ;
     width: 1200px;
@@ -65,7 +91,7 @@ span{
     margin: auto;
     padding: 6px 10px 10px 10px ;
     border-radius: 5px;
-
+    margin-bottom: 20px;
 }
 
 #user{

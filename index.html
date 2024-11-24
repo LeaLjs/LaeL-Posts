@@ -9,20 +9,37 @@
 
 </head>
 <body class="container">
+
+
+
     <header>
         <nav>
             <a href="">Ultimos Posts</a>
             <a href="">Home</a>
-            <a href="">Sobre Mim</a>
+            <a href="#"  onclick="showSection()">Criar Post</a>
             <a href="">Faq</a>
         </nav>
+
+        <div id="create-post">
+          <button id="close" onclick="hideSection()">X</button>
+          <div id="create-area">
+            <h1>Criar Tópico</h1>
+            <form action="">
+                <h1>título:</h1>
+                <input id="texto" type="text">
+                <input  type="button" value="Postar" onclick="postar()">
+            </form>
+          </div>
+        </div>
+
        
         <div id="title">
           <h1><span>Leal's</span> Posts</h1>
         </div>
-
-
+       
         
+  
+
         <section id="posts">
           <!--Posts Princípais que não devem ser apagados-->
         <div class="post">
@@ -36,7 +53,7 @@
               <h1>Tutorial Completo de Git e Github</h1>
             </div>
           </div>
-          <br>
+          
 
           <div class="post">
             <div id="user">
@@ -49,12 +66,13 @@
               <h1>Tutorial Completo de Git e Github</h1>
             </div>
           </div>
-          <br>
+          
           
 
         </section>
         
         
       </header>
-</body>
+      <script src="scripts.js"></script>
+    </body>
 </html>
