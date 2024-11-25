@@ -31,7 +31,14 @@ nav > a{
     color: #a47ec9;
     margin-left: 10px;
     margin-right: 10px;
+    transition: 1s;
 }
+
+nav > a:hover {
+    color: var(--laranja);
+    transition: 1s;
+}
+
 
 
 div#title{
@@ -43,7 +50,8 @@ div#title{
 div#title > h1{
     font-family: "Oswald", sans-serif;
     font-size: 65px;
-    font-weight: 700
+    font-weight: 700;
+
 }
 span{
     color: #a47ec9;
@@ -57,23 +65,49 @@ input{
 
 #create-post{
     background-color: #100e13;
-    width: 500px;
-    height: 300px;
+    width: 1000px;
+    height: 500px;
     padding: 30px;
-    float: right;
     margin-top: -10px;
     border-radius: 5px;
     display: none;
+    margin: auto;
 }
 #create-area{
     text-align: center;
 
 }
+#create-area input[type="text"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 60%;
+}
+
+textarea{
+    width: 60%;
+    height: 100px;
+    color: #fdfdfd;
+    background-color: #4c4c4c;
+}
 
 #close{
-    background-color: #0d256c;
-    display: flex;
-   margin-left: 490px;
+
+   background-color: var(--laranja);
+   color: white;
+   border: none;
+   border-radius: 40%;
+   cursor: pointer;
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: auto;
+   transition: 1s;
+}
+#close:hover {
+    background-color: #c62f10;
+    transition: 1s;
 }
 
 #posts{
@@ -82,6 +116,7 @@ input{
     margin: auto;
     border-radius: 20px;
     padding: 40px  20px  20px  20px;  
+    
 }
 
 .post{
@@ -94,12 +129,12 @@ input{
     margin-bottom: 20px;
 }
 
-#user{
+.user{
 display: flex;
 flex-direction: row;
 
 }
-#nickname{
+.nickname{
     color: #f3e9ec;
     margin-left: 10px;
     font-size: 16px;
@@ -108,12 +143,12 @@ hr{
     width: 800px;
 }
 
-#icon{
+.icon{
     width: 55px;
     border-radius: 50%;
 
 }
 
-#data{
+.data{
     margin-left: 10px;
 }
