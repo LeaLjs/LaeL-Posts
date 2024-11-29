@@ -14,10 +14,10 @@
 
     <header>
         <nav>
-            <a href="">Ultimos Posts</a>
-            <a href="">Home</a>
+            <a href="#posts">Ultimos Posts</a>
+            <a href="#">Home</a>
             <a href="#"  onclick="showSection()">Criar Post</a>
-            <a href="">Faq</a>
+            <a href="faq.html">Faq</a>
         </nav>
 
         <div id="create-post">
@@ -57,24 +57,34 @@
           </div>
           
 
-          <div class="post">
-            <div class="user">
-              <img class="icon" src="images/pato icon.jpg" alt="">
-              <p class="nickname">Davi</p>
-              <p class="data">23/11/2024</p>
-            </div>
-            
-            <div id="topic-title">
-              <h1>Tutorial Completo de Git e Github</h1>
-            </div>
-          </div>
+
           
           
 
         </section>
-        
+
         
       </header>
       <script src="scripts.js"></script>
+      <script>
+        // post.html script
+const params = new URLSearchParams(window.location.search);
+const postId = params.get("id");
+
+// Recuperar posts do Local Storage
+const posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+// Buscar post pelo ID
+const post = posts.find(p => p.id == postId);
+
+if (post) {
+    document.getElementById("post-title").innerText = post.titulo;
+    document.getElementById("post-content").innerText = post.conteudo;
+} else {
+    document.getElementById("post-title").innerText = "Post não encontrado!";
+    document.getElementById("post-content").innerText = "";
+}
+
+      </script>
     </body>
 </html>

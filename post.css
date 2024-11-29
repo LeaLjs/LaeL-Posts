@@ -34,13 +34,30 @@ nav > a:hover {
     text-decoration: none;
 }
 
-.content{
-    background-color:var(--bege);
+.fundo{
+    background-color:var(--laranja);
     color: var(--preto);
-    width: 670px;
+    width: 700px;
+   max-height: 1310px;
     margin: auto;
     margin-top: 70px;
+    padding: 0px 0px 0px 10px;
+    
+    border-radius: 10px;
+}
+
+#post-content{
+    background-color:var(--cinza);
+    color: var(--bege);
+    width: 750px;
+    margin: auto;
+ 
     padding: 10px;
     border-radius: 10px;
-    text-align: center;
+
+}
+#post-title{
+    
+    font-size: 40px;
+
 }

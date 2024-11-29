@@ -1,55 +1,94 @@
 
 
 function postar() {
-  let txt = document.getElementById("texto").value; // Título do post
-  let areaTexto = document.getElementById("conteudo").value; // Conteúdo do post
-  let posts = document.getElementById("posts");
+    let txt = document.getElementById("texto").value;
+    let areaTexto = document.getElementById("conteudo").value;
+    let posts = document.getElementById("posts");
 
-  // Validações de entrada
-  if (txt.trim().length === 0) {
-      alert("O título está vazio!");
-      return;
-  }
+    if (txt.trim() === "") {
+        alert("O título está vazio!");
+        return;
+    }
 
-  if (areaTexto.trim().length === 0) {
-      alert("Escreva o conteúdo!");
-      return;
-  }
+    if (areaTexto.trim() === "") {
+        alert("O conteúdo está vazio!");
+        return;
+    }
 
-  if (txt.trim().length > 150) {
-      alert("O título não pode ter mais de 150 caracteres!");
-      return;
-  }
+    const post = {
+        id: Date.now(), // Cria um ID único
+        titulo: txt,
+        conteudo: areaTexto,
+        data: new Date().toLocaleDateString()
+    };
 
-  // Criação do novo post na Home
-  const novoPost = document.createElement("div");
-  novoPost.className = "post";
+    // Salvar no Local Storage
+    let savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    savedPosts.push(post);
+    localStorage.setItem("posts", JSON.stringify(savedPosts));
 
-  // Codificar título e conteúdo para a URL
-  const tituloCodificado = encodeURIComponent(txt);
-  const conteudoCodificado = encodeURIComponent(areaTexto);
+    // Criar o post no DOM imediatamente
+    const novoPost = document.createElement("div");
+    novoPost.className = "post";
+    novoPost.setAttribute('data-id', post.id); // Para identificar o post
 
-  novoPost.innerHTML = `
-      <div class="user">
-          <img class="icon" src="images/pato icon.jpg" alt="">
-          <p class="nickname">Davi</p>
-          <p class="data">${new Date().toLocaleDateString()}</p>
-      </div>
-      <div class="topic-title">
-          <a href="post.html?titulo=${tituloCodificado}&conteudo=${conteudoCodificado}" target="_blank">
-              <h1>${txt}</h1>
-          </a>
-      </div>
-  `;
+    novoPost.innerHTML = `
+        <div class="user">
+            <img class="icon" src="images/pato icon.jpg" alt="">
+            <p class="nickname">Davi</p>
+            <p class="data">${post.data}</p>
+        </div>
+        <div class="topic-title">
+            <a href="post.html?id=${post.id}" target="_blank">
+                <h1>${post.titulo}</h1>
+            </a>
+            <button class="delete-btn" onclick="deletarPost(${post.id})">Deletar</button>
+        </div>
+    `;
 
-  // Adiciona o novo post na Home
-  posts.appendChild(novoPost);
+    posts.appendChild(novoPost);
 
-  // Limpa os campos de entrada
-  document.getElementById("texto").value = "";
-  document.getElementById("conteudo").value = "";
+    // Limpar campos
+    document.getElementById("texto").value = "";
+    document.getElementById("conteudo").value = "";
 }
 
+
+window.onload = function carregarPosts() {
+    const posts = JSON.parse(localStorage.getItem("posts")) || [];
+    const postsContainer = document.getElementById("posts");
+
+    posts.forEach(post => {
+        const novoPost = document.createElement("div");
+        novoPost.className = "post";
+
+        novoPost.innerHTML = `
+            <div class="user">
+                <img class="icon" src="images/pato icon.jpg" alt="">
+                <p class="nickname">Davi</p>
+                <p class="data">${post.data}</p>
+            </div>
+            <div class="topic-title">
+                <a href="post.html?id=${post.id}" target="_blank">
+                    <h1>${post.titulo}</h1>
+                </a>
+                 <button class="delete-btn" onclick="deletarPost(${post.id})">Deletar</button>
+            </div>
+        `;
+       
+        postsContainer.appendChild(novoPost);
+    });
+};
+function deletarPost(postId) {
+    // Remover do DOM
+    const postElement = document.querySelector(`.post[data-id='${postId}']`);
+    if (postElement) postElement.remove();
+
+    // Atualizar o Local Storage
+    let savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    savedPosts = savedPosts.filter(post => post.id !== postId); // Remove o post com o ID correspondente
+    localStorage.setItem("posts", JSON.stringify(savedPosts));
+}
 
 
 function showSection() {
@@ -70,6 +109,4 @@ function hideSection() {
       section.style.display = "none";
   }, 300);
 }
-
-
 

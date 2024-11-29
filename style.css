@@ -152,3 +152,25 @@ hr{
 .data{
     margin-left: 10px;
 }
+button{
+        background-color: var(--laranja);
+        color: white;
+        border: none;
+        border-radius: 40%;
+        cursor: pointer;
+        width: 55px;
+        padding: 5px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        transition: 1s;
+        float: right;
+        margin-top: -60px;
+}
+
+.topic-title > a:hover{
+text-decoration: underline;
+transition: 1s;
+}
